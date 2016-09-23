@@ -238,7 +238,7 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/23/测试/" itemprop="url">
+                <a class="post-title-link" href="/2016/09/23/    # 测试博客/" itemprop="url">
                   未命名
                 </a>
               
@@ -252,7 +252,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-23T00:57:57Z" content="2016-09-23">
+            <time itemprop="dateCreated" datetime="2016-09-23T01:00:03Z" content="2016-09-23">
               2016-09-23
             </time>
           </span>
@@ -282,7 +282,81 @@
       
         
           
-            <p># </p>
+            <pre><code># 测试博客
+</code></pre><p>Markdown是一种极简的『标记语言』，将文本转为HTML，通常为我大码农所用。其不追求大而全，简洁至上，正所谓不求最贵，只求最好！</p>
+<p>本文介绍Markdown基本语法，内容很少，一行语法一行示例，学会后可轻松写出高大上的文档，再也不需要各种编辑器去调文章格式。另外，网上有各平台下的Markdown工具可用，也有在线的，我直接使用sublime搞定，Markdown本来就是为了追求简洁，弄个工具岂不多此一举。</p>
+<p>强调</p>
+<p>星号与下划线都可以，单是斜体，双是粗体，符号可跨行，符号可加空格<br><strong>一个人来到田纳西</strong></p>
+<p><strong>毫无疑问</strong><br><em>我做的馅饼<br>是全天下</em><br><em>最好吃的</em><br>一个人来到田纳西</p>
+<p>毫无疑问<br>我做的馅饼<br>是全天下<br>最好吃的</p>
+<p>分割线</p>
+<h2 id="三个或更多-，必须单独一行，可含空格"><a href="#三个或更多-，必须单独一行，可含空格" class="headerlink" title="三个或更多-_*，必须单独一行，可含空格"></a>三个或更多-_*，必须单独一行，可含空格</h2><p>引用</p>
+<p>翻译成html就是<blockquote></blockquote>，符号后的空格可不要</p>
+<blockquote>
+<p>引用<br>引用</p>
+</blockquote>
+<p>内层符号前的空格必须要</p>
+<blockquote>
+<p>引用</p>
+<blockquote>
+<p>引用中的引用<br>引用</p>
+</blockquote>
+</blockquote>
+<p>引用中的引用</p>
+<p>标题：Setext方式</p>
+<p>三个或更多</p>
+<h1 id="大标题"><a href="#大标题" class="headerlink" title="大标题"></a>大标题</h1><h2 id="小标题"><a href="#小标题" class="headerlink" title="小标题"></a>小标题</h2><p>大标题</p>
+<p>小标题</p>
+<p>标题：Atx方式</p>
+<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><p>一级标题</p>
+<p>二级标题</p>
+<p>三级标题</p>
+<p>四级标题</p>
+<p>五级标题</p>
+<p>六级标题</p>
+<p>无序列表</p>
+<p>符号之后的空格不能少，-+*效果一样，但不能混合使用，因混合是嵌套列表，内容可超长</p>
+<ul>
+<li>无序列表</li>
+<li>无序列表</li>
+<li>无序列表</li>
+<li>无序列表：我很长。我也很长！那比一比啊？比就比！我有这么长，你有我长吗？我有这么这么长！好吧，你赢了！<br>无序列表<br>无序列表<br>无序列表<br>无序列表：我很长。我也很长！那比一比啊？比就比！我有这么长，你有我长吗？我有这么这么长！好吧，你赢了！<br>符号之后的空格不能少，-+*效果一样，但不能混合使用，因混合是嵌套列表</li>
+</ul>
+<ul>
+<li>无序列表</li>
+<li>无序列表</li>
+<li>无序列表<br>无序列表<br>无序列表<br>无序列表<br>符号之后的空格不能少，-+*效果一样，但不能混合使用，因混合是嵌套列表</li>
+</ul>
+<ul>
+<li>无序列表</li>
+<li>无序列表</li>
+<li>无序列表<br>无序列表<br>无序列表<br>无序列表<br>有序列表</li>
+</ul>
+<p>数字不能省略但可无序，点号之后的空格不能少</p>
+<ol>
+<li>有序列表</li>
+<li>有序列表</li>
+<li>有序列表</li>
+<li>有序列表<br>有序列表<br>有序列表<br>有序列表<br>有序列表<br>嵌套列表</li>
+</ol>
+<p>-+*可循环使用，但符号之后的空格不能少，符号之前的空格也不能少</p>
+<ul>
+<li>嵌套列表<ul>
+<li>嵌套列表</li>
+<li>嵌套列表</li>
+</ul>
+<ul>
+<li>嵌套列表<ul>
+<li>嵌套列表</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>嵌套列表<br>嵌套列表<br>嵌套列表<br>嵌套列表<br>嵌套列表<br>嵌套列表<br>嵌套列表<br>文字超链：Inline方式</li>
+</ul>
+<p>Tooltips可省略<br><a href="http://bruce-sha.github.io" title="不如的博客" target="_blank" rel="external">不如</a><br>不如</p>
+<p>图片超链</p>
+<p>多个感叹号，Tooltips可省略，要设置大小只能借助HTML标记<br><img src="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Mark" title="GitHub Mark"></p>
 
           
         
@@ -332,8 +406,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/22/hello-world/" itemprop="url">
-                  Hello World
+                <a class="post-title-link" href="/2016/09/23/测试/" itemprop="url">
+                  未命名
                 </a>
               
             
@@ -346,8 +420,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-22T13:15:35Z" content="2016-09-22">
-              2016-09-22
+            <time itemprop="dateCreated" datetime="2016-09-23T00:57:57Z" content="2016-09-23">
+              2016-09-23
             </time>
           </span>
 
@@ -376,15 +450,7 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+            <p># </p>
 
           
         
@@ -515,6 +581,108 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/22/hello-world/" itemprop="url">
+                  Hello World
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-22T13:15:35Z" content="2016-09-22">
+              2016-09-22
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -556,7 +724,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
