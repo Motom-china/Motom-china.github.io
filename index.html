@@ -238,7 +238,7 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/26/----1/" itemprop="url">
+                <a class="post-title-link" href="/2016/09/26/---/" itemprop="url">
                   第一篇博客
                 </a>
               
@@ -282,32 +282,46 @@
       
         
           
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>网上有很多人分享了自己的学习过程，不过自己做分析记忆会深刻一点，so ，下面就开始一步一步分析。</p>
+            <h1 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h1><p>&#x7F51;&#x4E0A;&#x6709;&#x5F88;&#x591A;&#x4EBA;&#x5206;&#x4EAB;&#x4E86;&#x81EA;&#x5DF1;&#x7684;&#x5B66;&#x4E60;&#x8FC7;&#x7A0B;&#xFF0C;&#x4E0D;&#x8FC7;&#x81EA;&#x5DF1;&#x505A;&#x5206;&#x6790;&#x8BB0;&#x5FC6;&#x4F1A;&#x6DF1;&#x523B;&#x4E00;&#x70B9;&#xFF0C;so &#xFF0C;&#x4E0B;&#x9762;&#x5C31;&#x5F00;&#x59CB;&#x4E00;&#x6B65;&#x4E00;&#x6B65;&#x5206;&#x6790;&#x3002;</p>
 <p>#part one</p>
-<p>##static void SimpleObjectExample<br><img src="media/14748509344000/14748511268596.jpg" alt=""><br>这里通过调用 modelwithjson方法来进行json－model的转换，点击方法跳进去。</p>
-<p>##+(instancetype)modelWithJSON:(id)json<br><img src="media/14748509344000/14748512074080.jpg" alt=""><br>这里调用了一个_yy_dictionaryWithJSON方法进行json－nsdictionary的转换。点进去看一看</p>
-<p>##+(NSDictionary *)_yy_dictionaryWithJSON:(id)json<br><img src="media/14748509344000/14748518422774.jpg" alt=""><br>第一行判断 json是否为空，kCFNull 是 NSNull 的单例,具体的介绍请看<a href="http://blog.csdn.net/xunyn/article/details/8283653" target="_blank" rel="external">本文</a>。然后声明了NSDictionary和NSData两个类， 然后进行类型判断，使用oc自带的NSJSONSerialization来进行数据的转换，返回一个NSDictionary类型。</p>
-<p>##+(instancetype)modelWithDictionary(NSDictionary *)dictionary<br><img src="media/14748509344000/14748547012880.jpg" alt=""><br>终于到了关键一步，这里首先进行类型的判断是否为空，再yymodel里包含了很多类型判断和空值判断，（看来一个框架要考虑健壮性，还有极强的容错性。）<br>类声明class cls = [self class]这里返回的是我们自定的类（也就是YYBook类),然后使用_YYModelMeta类,这个类是干嘛用的呢？我们先来看看这个类</p>
-<p>###_YYModelMeta<br>    @interface _YYModelMeta : NSObject {<br>        @package<br>        YYClassInfo <em>_classInfo;<br>        /// Key:mapped key and key path, Value:_YYModelPropertyMeta.<br>        NSDictionary </em>_mapper;<br>        /// Array<_yymodelpropertymeta>, all property meta of this model.<br>        NSArray <em>_allPropertyMetas;<br>        /// Array<_yymodelpropertymeta>, property meta which is mapped to a key path.<br>        NSArray </_yymodelpropertymeta></em>_keyPathPropertyMetas;<br>        /// Array<_yymodelpropertymeta>, property meta which is mapped to multi keys.<br>        NSArray *_multiKeysPropertyMetas;<br>        /// The number of mapped key (and key path), same to _mapper.count.<br>        NSUInteger _keyMappedCount;<br>        /// Model class type.<br>        YYEncodingNSType _nsType;</_yymodelpropertymeta></_yymodelpropertymeta></p>
-<pre><code>    BOOL _hasCustomWillTransformFromDictionary;
+<h2 id="static-void-SimpleObjectExample"><a href="#static-void-SimpleObjectExample" class="headerlink" title="static void SimpleObjectExample"></a>static void SimpleObjectExample</h2><p><img src="/2016/09/26/---/media/14748509344000/14748511268596.jpg" alt=""><br>&#x8FD9;&#x91CC;&#x901A;&#x8FC7;&#x8C03;&#x7528; modelwithjson&#x65B9;&#x6CD5;&#x6765;&#x8FDB;&#x884C;json&#xFF0D;model&#x7684;&#x8F6C;&#x6362;&#xFF0C;&#x70B9;&#x51FB;&#x65B9;&#x6CD5;&#x8DF3;&#x8FDB;&#x53BB;&#x3002;</p>
+<h2 id="instancetype-modelWithJSON-id-json"><a href="#instancetype-modelWithJSON-id-json" class="headerlink" title="+(instancetype)modelWithJSON:(id)json"></a>+(instancetype)modelWithJSON:(id)json</h2><p><img src="/2016/09/26/---/media/14748509344000/14748512074080.jpg" alt=""><br>&#x8FD9;&#x91CC;&#x8C03;&#x7528;&#x4E86;&#x4E00;&#x4E2A;_yy_dictionaryWithJSON&#x65B9;&#x6CD5;&#x8FDB;&#x884C;json&#xFF0D;nsdictionary&#x7684;&#x8F6C;&#x6362;&#x3002;&#x70B9;&#x8FDB;&#x53BB;&#x770B;&#x4E00;&#x770B;</p>
+<h2 id="NSDictionary-yy-dictionaryWithJSON-id-json"><a href="#NSDictionary-yy-dictionaryWithJSON-id-json" class="headerlink" title="+(NSDictionary *)_yy_dictionaryWithJSON:(id)json"></a>+(NSDictionary *)_yy_dictionaryWithJSON:(id)json</h2><p><img src="/2016/09/26/---/media/14748509344000/14748518422774.jpg" alt=""><br>&#x7B2C;&#x4E00;&#x884C;&#x5224;&#x65AD; json&#x662F;&#x5426;&#x4E3A;&#x7A7A;&#xFF0C;kCFNull &#x662F; NSNull &#x7684;&#x5355;&#x4F8B;,&#x5177;&#x4F53;&#x7684;&#x4ECB;&#x7ECD;&#x8BF7;&#x770B;<a href="http://blog.csdn.net/xunyn/article/details/8283653" target="_blank" rel="external">&#x672C;&#x6587;</a>&#x3002;&#x7136;&#x540E;&#x58F0;&#x660E;&#x4E86;NSDictionary&#x548C;NSData&#x4E24;&#x4E2A;&#x7C7B;&#xFF0C; &#x7136;&#x540E;&#x8FDB;&#x884C;&#x7C7B;&#x578B;&#x5224;&#x65AD;&#xFF0C;&#x4F7F;&#x7528;oc&#x81EA;&#x5E26;&#x7684;NSJSONSerialization&#x6765;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x7684;&#x8F6C;&#x6362;&#xFF0C;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;NSDictionary&#x7C7B;&#x578B;&#x3002;</p>
+<h2 id="instancetype-modelWithDictionary-NSDictionary-dictionary"><a href="#instancetype-modelWithDictionary-NSDictionary-dictionary" class="headerlink" title="+(instancetype)modelWithDictionary(NSDictionary *)dictionary"></a>+(instancetype)modelWithDictionary(NSDictionary *)dictionary</h2><p><img src="/2016/09/26/---/media/14748509344000/14748547012880.jpg" alt=""><br>&#x7EC8;&#x4E8E;&#x5230;&#x4E86;&#x5173;&#x952E;&#x4E00;&#x6B65;&#xFF0C;&#x8FD9;&#x91CC;&#x9996;&#x5148;&#x8FDB;&#x884C;&#x7C7B;&#x578B;&#x7684;&#x5224;&#x65AD;&#x662F;&#x5426;&#x4E3A;&#x7A7A;&#xFF0C;&#x518D;yymodel&#x91CC;&#x5305;&#x542B;&#x4E86;&#x5F88;&#x591A;&#x7C7B;&#x578B;&#x5224;&#x65AD;&#x548C;&#x7A7A;&#x503C;&#x5224;&#x65AD;&#xFF0C;&#xFF08;&#x770B;&#x6765;&#x4E00;&#x4E2A;&#x6846;&#x67B6;&#x8981;&#x8003;&#x8651;&#x5065;&#x58EE;&#x6027;&#xFF0C;&#x8FD8;&#x6709;&#x6781;&#x5F3A;&#x7684;&#x5BB9;&#x9519;&#x6027;&#x3002;&#xFF09;<br>&#x7C7B;&#x58F0;&#x660E;class cls = [self class]&#x8FD9;&#x91CC;&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x6211;&#x4EEC;&#x81EA;&#x5B9A;&#x7684;&#x7C7B;&#xFF08;&#x4E5F;&#x5C31;&#x662F;YYBook&#x7C7B;),&#x7136;&#x540E;&#x4F7F;&#x7528;_YYModelMeta&#x7C7B;,&#x8FD9;&#x4E2A;&#x7C7B;&#x662F;&#x5E72;&#x561B;&#x7528;&#x7684;&#x5462;&#xFF1F;&#x6211;&#x4EEC;&#x5148;&#x6765;&#x770B;&#x770B;&#x8FD9;&#x4E2A;&#x7C7B;</p>
+<h3 id="YYModelMeta"><a href="#YYModelMeta" class="headerlink" title="_YYModelMeta"></a>_YYModelMeta</h3><pre><code>@interface _YYModelMeta : NSObject {
+    @package
+    YYClassInfo *_classInfo;
+    /// Key:mapped key and key path, Value:_YYModelPropertyMeta.
+    NSDictionary *_mapper;
+    /// Array&lt;_YYModelPropertyMeta&gt;, all property meta of this model.
+    NSArray *_allPropertyMetas;
+    /// Array&lt;_YYModelPropertyMeta&gt;, property meta which is mapped to a key path.
+    NSArray *_keyPathPropertyMetas;
+    /// Array&lt;_YYModelPropertyMeta&gt;, property meta which is mapped to multi keys.
+    NSArray *_multiKeysPropertyMetas;
+    /// The number of mapped key (and key path), same to _mapper.count.
+    NSUInteger _keyMappedCount;
+    /// Model class type.
+    YYEncodingNSType _nsType;
+
+    BOOL _hasCustomWillTransformFromDictionary;
     BOOL _hasCustomTransformFromDictionary;
     BOOL _hasCustomTransformToDictionary;
     BOOL _hasCustomClassFromDictionary;
 }
 @end
-</code></pre><p>先从参数说起</p>
-<p>###YYClassInfo *classInfo<br>这个类是什么意思呢？来看一下<br><img src="media/14748509344000/14748723386685.jpg" alt=""><br>第一个cls 指向自己，第二个superCls指向自己的父类，第三个类metaCls指向自己的元类。（如果这里有问题，那么你需要了解到<a href="https://www.ianisme.com/ios/2019.html" target="_blank" rel="external">runtime</a>,以及<a href="http://www.jianshu.com/p/41735c66dccb" target="_blank" rel="external">类的的内部结构</a>。）<br>isMeta判断自己是否是元类，name为类的名称YYClassInfo是对自己的父类的一个封装，剩下的三个NSDictionary :ivarInfos,methodInfos,propertyInfos是对类中属性(property)，方法(method)，ivar(class)的保存。</p>
-<p>###其他参数</p>
-<p>_mapper:存储 Json key 与 _PropertyMeta对象 的映射关系字典<br>_allPropertyMetas:数组存放所有的 PropertyMeta<br>_keyPathPropertyMetas:数组存放所有映射json keyPath 的 _PropertyMeta对象<br>_multiKeysPropertyMetas：数组存放所有映射多个json key 的 _PropertyMeta对象（一对多）</p>
-<p>NSUInteger _keyMappedCount; 自定义类的属性个数（比如YYBook里面有三个属性，如果自定义类中包含另外的类B的话，类B以及其中的属性不算入其中）<br>_nsType：解析Class是Foundation类型哪一种<br>_hasCustomWillTransformFromDictionary、_hasCustomTransformFromDictionary、_hasCustomTransformToDictionary、_hasCustomClassFromDictionary，作用：判断YYModel协议方法是否实现<br>我们先根据流程 遇到哪个参数再讲。</p>
-<p>##+(instancetype)modelWithDictionary(NSDictionary *)dictionary<br>先回到我们的步骤中去<br><img src="media/14748509344000/14748547012880.jpg" alt=""><br>1464行 对一个_YYModelMeta类进行了处理，那么我们跳进去看一下metaWithClass这个方法</p>
-<p>##+ (instancetype)metaWithClass:(Class)cls<br><img src="media/14748509344000/14748753679766.jpg" alt=""></p>
-<p>这一个方法开始涉及到底层的一些代码，其中有cf框架，它是一组c语言接口，通过调用底层的c可以使得代码的运行效率大大提高。( YYKit的效率高于现在其他的主流框架。效率对比请看<a href="http://blog.ibireme.com/2015/10/23/ios_model_framework_benchmark/" target="_blank" rel="external">这里</a>)。开始仍然是是否为空的判断，然后出现了一个以CF开头的CFMutableDictionaryRef的声明，dispatch_once_t  线程的一个单例,dispatch_semaphore_t 线程的锁(这里是为了防止多线程造成的数据错误，也就是防止多个线程同时改变同一数据)。<br>dispatch_once(GCD，该函数只执行一次，之后便不在执行，想深入了解请看<a href="http://www.dreamingwish.com/article/gcd-guide-dispatch-once-1.html" target="_blank" rel="external">这里</a>)。<br>cache（缓存）顾名思义 是用来存放数据的，之后的方法CFDictionaryCreateMutable方法为cache申请了一块内存空间用来存放类的相关数据。lock解锁。（想了解CFMutableDictionaryRef的同学请看<a href="http://www.jianshu.com/p/45a974fafa7c" target="_blank" rel="external">这里</a>）<br>因为第一次调用metaWithClass:(class)cls的时候cls转换meta为nil，所以我们进入到644行meta = [[_YYModelMeta alloc] initWithClass:cls];</p>
-<h2 id="instancetype-initWithClass-Class-cls"><a href="#instancetype-initWithClass-Class-cls" class="headerlink" title="-(instancetype)initWithClass:(Class)cls"></a>-(instancetype)initWithClass:(Class)cls</h2><p>跳进-(instancetype)initWithClass:(Class)cls 你会发现，卧槽，200多行代码在等着你，很强，让我们从这个方法的第一行开始（代码好长我就不整个贴了，你可以打开xcode自己查看），</p>
+</code></pre><p>&#x5148;&#x4ECE;&#x53C2;&#x6570;&#x8BF4;&#x8D77;</p>
+<h3 id="YYClassInfo-classInfo"><a href="#YYClassInfo-classInfo" class="headerlink" title="YYClassInfo *classInfo"></a>YYClassInfo *classInfo</h3><p>&#x8FD9;&#x4E2A;&#x7C7B;&#x662F;&#x4EC0;&#x4E48;&#x610F;&#x601D;&#x5462;&#xFF1F;&#x6765;&#x770B;&#x4E00;&#x4E0B;<br><img src="/2016/09/26/---/media/14748509344000/14748723386685.jpg" alt=""><br>&#x7B2C;&#x4E00;&#x4E2A;cls &#x6307;&#x5411;&#x81EA;&#x5DF1;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;superCls&#x6307;&#x5411;&#x81EA;&#x5DF1;&#x7684;&#x7236;&#x7C7B;&#xFF0C;&#x7B2C;&#x4E09;&#x4E2A;&#x7C7B;metaCls&#x6307;&#x5411;&#x81EA;&#x5DF1;&#x7684;&#x5143;&#x7C7B;&#x3002;&#xFF08;&#x5982;&#x679C;&#x8FD9;&#x91CC;&#x6709;&#x95EE;&#x9898;&#xFF0C;&#x90A3;&#x4E48;&#x4F60;&#x9700;&#x8981;&#x4E86;&#x89E3;&#x5230;<a href="https://www.ianisme.com/ios/2019.html" target="_blank" rel="external">runtime</a>,&#x4EE5;&#x53CA;<a href="http://www.jianshu.com/p/41735c66dccb" target="_blank" rel="external">&#x7C7B;&#x7684;&#x7684;&#x5185;&#x90E8;&#x7ED3;&#x6784;</a>&#x3002;&#xFF09;<br>isMeta&#x5224;&#x65AD;&#x81EA;&#x5DF1;&#x662F;&#x5426;&#x662F;&#x5143;&#x7C7B;&#xFF0C;name&#x4E3A;&#x7C7B;&#x7684;&#x540D;&#x79F0;YYClassInfo&#x662F;&#x5BF9;&#x81EA;&#x5DF1;&#x7684;&#x7236;&#x7C7B;&#x7684;&#x4E00;&#x4E2A;&#x5C01;&#x88C5;&#xFF0C;&#x5269;&#x4E0B;&#x7684;&#x4E09;&#x4E2A;NSDictionary :ivarInfos,methodInfos,propertyInfos&#x662F;&#x5BF9;&#x7C7B;&#x4E2D;&#x5C5E;&#x6027;(property)&#xFF0C;&#x65B9;&#x6CD5;(method)&#xFF0C;ivar(class)&#x7684;&#x4FDD;&#x5B58;&#x3002;</p>
+<h3 id="&#x5176;&#x4ED6;&#x53C2;&#x6570;"><a href="#&#x5176;&#x4ED6;&#x53C2;&#x6570;" class="headerlink" title="&#x5176;&#x4ED6;&#x53C2;&#x6570;"></a>&#x5176;&#x4ED6;&#x53C2;&#x6570;</h3><p>_mapper:&#x5B58;&#x50A8; Json key &#x4E0E; _PropertyMeta&#x5BF9;&#x8C61; &#x7684;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#x5B57;&#x5178;<br>_allPropertyMetas:&#x6570;&#x7EC4;&#x5B58;&#x653E;&#x6240;&#x6709;&#x7684; PropertyMeta<br>_keyPathPropertyMetas:&#x6570;&#x7EC4;&#x5B58;&#x653E;&#x6240;&#x6709;&#x6620;&#x5C04;json keyPath &#x7684; _PropertyMeta&#x5BF9;&#x8C61;<br>_multiKeysPropertyMetas&#xFF1A;&#x6570;&#x7EC4;&#x5B58;&#x653E;&#x6240;&#x6709;&#x6620;&#x5C04;&#x591A;&#x4E2A;json key &#x7684; _PropertyMeta&#x5BF9;&#x8C61;&#xFF08;&#x4E00;&#x5BF9;&#x591A;&#xFF09;</p>
+<p>NSUInteger _keyMappedCount; &#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#x7684;&#x5C5E;&#x6027;&#x4E2A;&#x6570;&#xFF08;&#x6BD4;&#x5982;YYBook&#x91CC;&#x9762;&#x6709;&#x4E09;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x5982;&#x679C;&#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#x4E2D;&#x5305;&#x542B;&#x53E6;&#x5916;&#x7684;&#x7C7B;B&#x7684;&#x8BDD;&#xFF0C;&#x7C7B;B&#x4EE5;&#x53CA;&#x5176;&#x4E2D;&#x7684;&#x5C5E;&#x6027;&#x4E0D;&#x7B97;&#x5165;&#x5176;&#x4E2D;&#xFF09;<br>_nsType&#xFF1A;&#x89E3;&#x6790;Class&#x662F;Foundation&#x7C7B;&#x578B;&#x54EA;&#x4E00;&#x79CD;<br>_hasCustomWillTransformFromDictionary&#x3001;_hasCustomTransformFromDictionary&#x3001;_hasCustomTransformToDictionary&#x3001;_hasCustomClassFromDictionary&#xFF0C;&#x4F5C;&#x7528;&#xFF1A;&#x5224;&#x65AD;YYModel&#x534F;&#x8BAE;&#x65B9;&#x6CD5;&#x662F;&#x5426;&#x5B9E;&#x73B0;<br>&#x6211;&#x4EEC;&#x5148;&#x6839;&#x636E;&#x6D41;&#x7A0B; &#x9047;&#x5230;&#x54EA;&#x4E2A;&#x53C2;&#x6570;&#x518D;&#x8BB2;&#x3002;</p>
+<h2 id="instancetype-modelWithDictionary-NSDictionary-dictionary-1"><a href="#instancetype-modelWithDictionary-NSDictionary-dictionary-1" class="headerlink" title="+(instancetype)modelWithDictionary(NSDictionary *)dictionary"></a>+(instancetype)modelWithDictionary(NSDictionary *)dictionary</h2><p>&#x5148;&#x56DE;&#x5230;&#x6211;&#x4EEC;&#x7684;&#x6B65;&#x9AA4;&#x4E2D;&#x53BB;<br><img src="/2016/09/26/---/media/14748509344000/14748547012880.jpg" alt=""><br>1464&#x884C; &#x5BF9;&#x4E00;&#x4E2A;_YYModelMeta&#x7C7B;&#x8FDB;&#x884C;&#x4E86;&#x5904;&#x7406;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x8DF3;&#x8FDB;&#x53BB;&#x770B;&#x4E00;&#x4E0B;metaWithClass&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;</p>
+<h2 id="instancetype-metaWithClass-Class-cls"><a href="#instancetype-metaWithClass-Class-cls" class="headerlink" title="+ (instancetype)metaWithClass:(Class)cls"></a>+ (instancetype)metaWithClass:(Class)cls</h2><p><img src="/2016/09/26/---/media/14748509344000/14748753679766.jpg" alt=""></p>
+<p>&#x8FD9;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x5F00;&#x59CB;&#x6D89;&#x53CA;&#x5230;&#x5E95;&#x5C42;&#x7684;&#x4E00;&#x4E9B;&#x4EE3;&#x7801;&#xFF0C;&#x5176;&#x4E2D;&#x6709;cf&#x6846;&#x67B6;&#xFF0C;&#x5B83;&#x662F;&#x4E00;&#x7EC4;c&#x8BED;&#x8A00;&#x63A5;&#x53E3;&#xFF0C;&#x901A;&#x8FC7;&#x8C03;&#x7528;&#x5E95;&#x5C42;&#x7684;c&#x53EF;&#x4EE5;&#x4F7F;&#x5F97;&#x4EE3;&#x7801;&#x7684;&#x8FD0;&#x884C;&#x6548;&#x7387;&#x5927;&#x5927;&#x63D0;&#x9AD8;&#x3002;( YYKit&#x7684;&#x6548;&#x7387;&#x9AD8;&#x4E8E;&#x73B0;&#x5728;&#x5176;&#x4ED6;&#x7684;&#x4E3B;&#x6D41;&#x6846;&#x67B6;&#x3002;&#x6548;&#x7387;&#x5BF9;&#x6BD4;&#x8BF7;&#x770B;<a href="http://blog.ibireme.com/2015/10/23/ios_model_framework_benchmark/" target="_blank" rel="external">&#x8FD9;&#x91CC;</a>)&#x3002;&#x5F00;&#x59CB;&#x4ECD;&#x7136;&#x662F;&#x662F;&#x5426;&#x4E3A;&#x7A7A;&#x7684;&#x5224;&#x65AD;&#xFF0C;&#x7136;&#x540E;&#x51FA;&#x73B0;&#x4E86;&#x4E00;&#x4E2A;&#x4EE5;CF&#x5F00;&#x5934;&#x7684;CFMutableDictionaryRef&#x7684;&#x58F0;&#x660E;&#xFF0C;dispatch_once_t  &#x7EBF;&#x7A0B;&#x7684;&#x4E00;&#x4E2A;&#x5355;&#x4F8B;,dispatch_semaphore_t &#x7EBF;&#x7A0B;&#x7684;&#x9501;(&#x8FD9;&#x91CC;&#x662F;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x591A;&#x7EBF;&#x7A0B;&#x9020;&#x6210;&#x7684;&#x6570;&#x636E;&#x9519;&#x8BEF;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x9632;&#x6B62;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x540C;&#x65F6;&#x6539;&#x53D8;&#x540C;&#x4E00;&#x6570;&#x636E;)&#x3002;<br>dispatch_once(GCD&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x53EA;&#x6267;&#x884C;&#x4E00;&#x6B21;&#xFF0C;&#x4E4B;&#x540E;&#x4FBF;&#x4E0D;&#x5728;&#x6267;&#x884C;&#xFF0C;&#x60F3;&#x6DF1;&#x5165;&#x4E86;&#x89E3;&#x8BF7;&#x770B;<a href="http://www.dreamingwish.com/article/gcd-guide-dispatch-once-1.html" target="_blank" rel="external">&#x8FD9;&#x91CC;</a>)&#x3002;<br>cache&#xFF08;&#x7F13;&#x5B58;&#xFF09;&#x987E;&#x540D;&#x601D;&#x4E49; &#x662F;&#x7528;&#x6765;&#x5B58;&#x653E;&#x6570;&#x636E;&#x7684;&#xFF0C;&#x4E4B;&#x540E;&#x7684;&#x65B9;&#x6CD5;CFDictionaryCreateMutable&#x65B9;&#x6CD5;&#x4E3A;cache&#x7533;&#x8BF7;&#x4E86;&#x4E00;&#x5757;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x7528;&#x6765;&#x5B58;&#x653E;&#x7C7B;&#x7684;&#x76F8;&#x5173;&#x6570;&#x636E;&#x3002;lock&#x89E3;&#x9501;&#x3002;&#xFF08;&#x60F3;&#x4E86;&#x89E3;CFMutableDictionaryRef&#x7684;&#x540C;&#x5B66;&#x8BF7;&#x770B;<a href="http://www.jianshu.com/p/45a974fafa7c" target="_blank" rel="external">&#x8FD9;&#x91CC;</a>&#xFF09;<br>&#x56E0;&#x4E3A;&#x7B2C;&#x4E00;&#x6B21;&#x8C03;&#x7528;metaWithClass:(class)cls&#x7684;&#x65F6;&#x5019;cls&#x8F6C;&#x6362;meta&#x4E3A;nil&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x8FDB;&#x5165;&#x5230;644&#x884C;meta = [[_YYModelMeta alloc] initWithClass:cls];</p>
+<h2 id="instancetype-initWithClass-Class-cls"><a href="#instancetype-initWithClass-Class-cls" class="headerlink" title="-(instancetype)initWithClass:(Class)cls"></a>-(instancetype)initWithClass:(Class)cls</h2><p>&#x8DF3;&#x8FDB;-(instancetype)initWithClass:(Class)cls &#x4F60;&#x4F1A;&#x53D1;&#x73B0;&#xFF0C;&#x5367;&#x69FD;&#xFF0C;200&#x591A;&#x884C;&#x4EE3;&#x7801;&#x5728;&#x7B49;&#x7740;&#x4F60;&#xFF0C;&#x5F88;&#x5F3A;&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x4ECE;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x7B2C;&#x4E00;&#x884C;&#x5F00;&#x59CB;&#xFF08;&#x4EE3;&#x7801;&#x597D;&#x957F;&#x6211;&#x5C31;&#x4E0D;&#x6574;&#x4E2A;&#x8D34;&#x4E86;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x6253;&#x5F00;xcode&#x81EA;&#x5DF1;&#x67E5;&#x770B;&#xFF09;&#xFF0C;</p>
 <ul>
-<li>(instancetype)classInfoWithClass:(Class)cls  第一行,卧槽又是一个方法，好 再跳。<br>##+ (instancetype)classInfoWithClass:(Class)cls<br><img src="media/14748509344000/14748817738588.jpg" alt=""><br>有了前面的分析，对于这一段代码是不是觉得很容易上手？<br>未完待续。。</li>
+<li>(instancetype)classInfoWithClass:(Class)cls  &#x7B2C;&#x4E00;&#x884C;,&#x5367;&#x69FD;&#x53C8;&#x662F;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x597D; &#x518D;&#x8DF3;&#x3002;<h2 id="instancetype-classInfoWithClass-Class-cls"><a href="#instancetype-classInfoWithClass-Class-cls" class="headerlink" title="+ (instancetype)classInfoWithClass:(Class)cls"></a>+ (instancetype)classInfoWithClass:(Class)cls</h2><img src="/2016/09/26/---/media/14748509344000/14748817738588.jpg" alt=""><br>&#x6709;&#x4E86;&#x524D;&#x9762;&#x7684;&#x5206;&#x6790;&#xFF0C;&#x5BF9;&#x4E8E;&#x8FD9;&#x4E00;&#x6BB5;&#x4EE3;&#x7801;&#x662F;&#x4E0D;&#x662F;&#x89C9;&#x5F97;&#x5F88;&#x5BB9;&#x6613;&#x4E0A;&#x624B;&#xFF1F;<br>&#x672A;&#x5B8C;&#x5F85;&#x7EED;&#x3002;&#x3002;</li>
 </ul>
-<p>广度决定了深度，这句话应该是没错的，越深层的东西，就越需要你有很广的知识面才可以理解，就那这篇博客来说，一个yymodel涉及到了很多知识点，相信分析完毕之后，对其他的知识也能快速掌握，没错，一个一个来＝ ＝。<br>（YYModel — 高性能的 iOS JSON 模型框架。<br>YYCache — 高性能的 iOS 缓存框架。<br>YYImage — 功能强大的 iOS 图像框架。<br>YYWebImage — 高性能的 iOS 异步图像加载框架。<br>YYText — 功能强大的 iOS 富文本框架。<br>YYKeyboardManager — iOS 键盘监听管理工具。<br>YYDispatchQueuePool — iOS 全局并发队列管理工具。<br>YYAsyncLayer — iOS 异步绘制与显示的工具。<br>YYCategories — 功能丰富的 Category 类型工具库。）</p>
+<p>&#x5E7F;&#x5EA6;&#x51B3;&#x5B9A;&#x4E86;&#x6DF1;&#x5EA6;&#xFF0C;&#x8FD9;&#x53E5;&#x8BDD;&#x5E94;&#x8BE5;&#x662F;&#x6CA1;&#x9519;&#x7684;&#xFF0C;&#x8D8A;&#x6DF1;&#x5C42;&#x7684;&#x4E1C;&#x897F;&#xFF0C;&#x5C31;&#x8D8A;&#x9700;&#x8981;&#x4F60;&#x6709;&#x5F88;&#x5E7F;&#x7684;&#x77E5;&#x8BC6;&#x9762;&#x624D;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#xFF0C;&#x5C31;&#x90A3;&#x8FD9;&#x7BC7;&#x535A;&#x5BA2;&#x6765;&#x8BF4;&#xFF0C;&#x4E00;&#x4E2A;yymodel&#x6D89;&#x53CA;&#x5230;&#x4E86;&#x5F88;&#x591A;&#x77E5;&#x8BC6;&#x70B9;&#xFF0C;&#x76F8;&#x4FE1;&#x5206;&#x6790;&#x5B8C;&#x6BD5;&#x4E4B;&#x540E;&#xFF0C;&#x5BF9;&#x5176;&#x4ED6;&#x7684;&#x77E5;&#x8BC6;&#x4E5F;&#x80FD;&#x5FEB;&#x901F;&#x638C;&#x63E1;&#xFF0C;&#x6CA1;&#x9519;&#xFF0C;&#x4E00;&#x4E2A;&#x4E00;&#x4E2A;&#x6765;&#xFF1D; &#xFF1D;&#x3002;<br>&#xFF08;YYModel &#x2014; &#x9AD8;&#x6027;&#x80FD;&#x7684; iOS JSON &#x6A21;&#x578B;&#x6846;&#x67B6;&#x3002;<br>YYCache &#x2014; &#x9AD8;&#x6027;&#x80FD;&#x7684; iOS &#x7F13;&#x5B58;&#x6846;&#x67B6;&#x3002;<br>YYImage &#x2014; &#x529F;&#x80FD;&#x5F3A;&#x5927;&#x7684; iOS &#x56FE;&#x50CF;&#x6846;&#x67B6;&#x3002;<br>YYWebImage &#x2014; &#x9AD8;&#x6027;&#x80FD;&#x7684; iOS &#x5F02;&#x6B65;&#x56FE;&#x50CF;&#x52A0;&#x8F7D;&#x6846;&#x67B6;&#x3002;<br>YYText &#x2014; &#x529F;&#x80FD;&#x5F3A;&#x5927;&#x7684; iOS &#x5BCC;&#x6587;&#x672C;&#x6846;&#x67B6;&#x3002;<br>YYKeyboardManager &#x2014; iOS &#x952E;&#x76D8;&#x76D1;&#x542C;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x3002;<br>YYDispatchQueuePool &#x2014; iOS &#x5168;&#x5C40;&#x5E76;&#x53D1;&#x961F;&#x5217;&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x3002;<br>YYAsyncLayer &#x2014; iOS &#x5F02;&#x6B65;&#x7ED8;&#x5236;&#x4E0E;&#x663E;&#x793A;&#x7684;&#x5DE5;&#x5177;&#x3002;<br>YYCategories &#x2014; &#x529F;&#x80FD;&#x4E30;&#x5BCC;&#x7684; Category &#x7C7B;&#x578B;&#x5DE5;&#x5177;&#x5E93;&#x3002;&#xFF09;</p>
 
           
         
@@ -357,127 +371,7 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/26/---/" itemprop="url">
-                  未命名
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-26T00:48:54Z" content="2016-09-26">
-              2016-09-26
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h2 id="title-YYModel-探秘"><a href="#title-YYModel-探秘" class="headerlink" title="title:YYModel 探秘"></a>title:YYModel 探秘</h2><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>网上有很多人分享了自己的学习过程，不过自己做分析记忆会深刻一点，so ，下面就开始一步一步分析。</p>
-<p>#part one</p>
-<p>##static void SimpleObjectExample<br><img src="media/14748509344000/14748511268596.jpg" alt=""><br>这里通过调用 modelwithjson方法来进行json－model的转换，点击方法跳进去。</p>
-<p>##+(instancetype)modelWithJSON:(id)json<br><img src="media/14748509344000/14748512074080.jpg" alt=""><br>这里调用了一个_yy_dictionaryWithJSON方法进行json－nsdictionary的转换。点进去看一看</p>
-<p>##+(NSDictionary *)_yy_dictionaryWithJSON:(id)json<br><img src="media/14748509344000/14748518422774.jpg" alt=""><br>第一行判断 json是否为空，kCFNull 是 NSNull 的单例,具体的介绍请看<a href="http://blog.csdn.net/xunyn/article/details/8283653" target="_blank" rel="external">本文</a>。然后声明了NSDictionary和NSData两个类， 然后进行类型判断，使用oc自带的NSJSONSerialization来进行数据的转换，返回一个NSDictionary类型。</p>
-<p>##+(instancetype)modelWithDictionary(NSDictionary *)dictionary<br><img src="media/14748509344000/14748547012880.jpg" alt=""><br>终于到了关键一步，这里首先进行类型的判断是否为空，再yymodel里包含了很多类型判断和空值判断，（看来一个框架要考虑健壮性，还有极强的容错性。）<br>类声明class cls = [self class]这里返回的是我们自定的类（也就是YYBook类),然后使用_YYModelMeta类,这个类是干嘛用的呢？我们先来看看这个类</p>
-<p>###_YYModelMeta<br>    @interface _YYModelMeta : NSObject {<br>        @package<br>        YYClassInfo <em>_classInfo;<br>        /// Key:mapped key and key path, Value:_YYModelPropertyMeta.<br>        NSDictionary </em>_mapper;<br>        /// Array<_yymodelpropertymeta>, all property meta of this model.<br>        NSArray <em>_allPropertyMetas;<br>        /// Array<_yymodelpropertymeta>, property meta which is mapped to a key path.<br>        NSArray </_yymodelpropertymeta></em>_keyPathPropertyMetas;<br>        /// Array<_yymodelpropertymeta>, property meta which is mapped to multi keys.<br>        NSArray *_multiKeysPropertyMetas;<br>        /// The number of mapped key (and key path), same to _mapper.count.<br>        NSUInteger _keyMappedCount;<br>        /// Model class type.<br>        YYEncodingNSType _nsType;</_yymodelpropertymeta></_yymodelpropertymeta></p>
-<pre><code>    BOOL _hasCustomWillTransformFromDictionary;
-    BOOL _hasCustomTransformFromDictionary;
-    BOOL _hasCustomTransformToDictionary;
-    BOOL _hasCustomClassFromDictionary;
-}
-@end
-</code></pre><p>先从参数说起</p>
-<p>###YYClassInfo *classInfo<br>这个类是什么意思呢？来看一下<br><img src="media/14748509344000/14748723386685.jpg" alt=""><br>第一个cls 指向自己，第二个superCls指向自己的父类，第三个类metaCls指向自己的元类。（如果这里有问题，那么你需要了解到<a href="https://www.ianisme.com/ios/2019.html" target="_blank" rel="external">runtime</a>,以及<a href="http://www.jianshu.com/p/41735c66dccb" target="_blank" rel="external">类的的内部结构</a>。）<br>isMeta判断自己是否是元类，name为类的名称YYClassInfo是对自己的父类的一个封装，剩下的三个NSDictionary :ivarInfos,methodInfos,propertyInfos是对类中属性(property)，方法(method)，ivar(class)的保存。</p>
-<p>###其他参数</p>
-<p>_mapper:存储 Json key 与 _PropertyMeta对象 的映射关系字典<br>_allPropertyMetas:数组存放所有的 PropertyMeta<br>_keyPathPropertyMetas:数组存放所有映射json keyPath 的 _PropertyMeta对象<br>_multiKeysPropertyMetas：数组存放所有映射多个json key 的 _PropertyMeta对象（一对多）</p>
-<p>NSUInteger _keyMappedCount; 自定义类的属性个数（比如YYBook里面有三个属性，如果自定义类中包含另外的类B的话，类B以及其中的属性不算入其中）<br>_nsType：解析Class是Foundation类型哪一种<br>_hasCustomWillTransformFromDictionary、_hasCustomTransformFromDictionary、_hasCustomTransformToDictionary、_hasCustomClassFromDictionary，作用：判断YYModel协议方法是否实现<br>我们先根据流程 遇到哪个参数再讲。</p>
-<p>##+(instancetype)modelWithDictionary(NSDictionary *)dictionary<br>先回到我们的步骤中去<br><img src="media/14748509344000/14748547012880.jpg" alt=""><br>1464行 对一个_YYModelMeta类进行了处理，那么我们跳进去看一下metaWithClass这个方法</p>
-<p>##+ (instancetype)metaWithClass:(Class)cls<br><img src="media/14748509344000/14748753679766.jpg" alt=""></p>
-<p>这一个方法开始涉及到底层的一些代码，其中有cf框架，它是一组c语言接口，通过调用底层的c可以使得代码的运行效率大大提高。( YYKit的效率高于现在其他的主流框架。效率对比请看<a href="http://blog.ibireme.com/2015/10/23/ios_model_framework_benchmark/" target="_blank" rel="external">这里</a>)。开始仍然是是否为空的判断，然后出现了一个以CF开头的CFMutableDictionaryRef的声明，dispatch_once_t  线程的一个单例,dispatch_semaphore_t 线程的锁(这里是为了防止多线程造成的数据错误，也就是防止多个线程同时改变同一数据)。<br>dispatch_once(GCD，该函数只执行一次，之后便不在执行，想深入了解请看<a href="http://www.dreamingwish.com/article/gcd-guide-dispatch-once-1.html" target="_blank" rel="external">这里</a>)。<br>cache（缓存）顾名思义 是用来存放数据的，之后的方法CFDictionaryCreateMutable方法为cache申请了一块内存空间用来存放类的相关数据。lock解锁。（想了解CFMutableDictionaryRef的同学请看<a href="http://www.jianshu.com/p/45a974fafa7c" target="_blank" rel="external">这里</a>）<br>因为第一次调用metaWithClass:(class)cls的时候cls转换meta为nil，所以我们进入到644行meta = [[_YYModelMeta alloc] initWithClass:cls];</p>
-<h2 id="instancetype-initWithClass-Class-cls"><a href="#instancetype-initWithClass-Class-cls" class="headerlink" title="-(instancetype)initWithClass:(Class)cls"></a>-(instancetype)initWithClass:(Class)cls</h2><p>跳进-(instancetype)initWithClass:(Class)cls 你会发现，卧槽，200多行代码在等着你，很强，让我们从这个方法的第一行开始（代码好长我就不整个贴了，你可以打开xcode自己查看），</p>
-<ul>
-<li>(instancetype)classInfoWithClass:(Class)cls  第一行,卧槽又是一个方法，好 再跳。<br>##+ (instancetype)classInfoWithClass:(Class)cls<br><img src="media/14748509344000/14748817738588.jpg" alt=""><br>有了前面的分析，对于这一段代码是不是觉得很容易上手？<br>未完待续。。</li>
-</ul>
-<p>广度决定了深度，这句话应该是没错的，越深层的东西，就越需要你有很广的知识面才可以理解，就那这篇博客来说，一个yymodel涉及到了很多知识点，相信分析完毕之后，对其他的知识也能快速掌握，没错，一个一个来＝ ＝。<br>（YYModel — 高性能的 iOS JSON 模型框架。<br>YYCache — 高性能的 iOS 缓存框架。<br>YYImage — 功能强大的 iOS 图像框架。<br>YYWebImage — 高性能的 iOS 异步图像加载框架。<br>YYText — 功能强大的 iOS 富文本框架。<br>YYKeyboardManager — iOS 键盘监听管理工具。<br>YYDispatchQueuePool — iOS 全局并发队列管理工具。<br>YYAsyncLayer — iOS 异步绘制与显示的工具。<br>YYCategories — 功能丰富的 Category 类型工具库。）</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/23/----/" itemprop="url">
+                <a class="post-title-link" href="/2016/09/23/----1/" itemprop="url">
                   第一篇博客
                 </a>
               
@@ -521,8 +415,8 @@
       
         
           
-            <h1 id="假装是标题"><a href="#假装是标题" class="headerlink" title="假装是标题"></a>假装是标题</h1><p>这个网站是我的第一个博客网站，我希望以后能够写一些自己的学习心得，工作经验与大家分享。</p>
-<p>千里之行始于足下，知识要慢慢积累。</p>
+            <h1 id="&#x5047;&#x88C5;&#x662F;&#x6807;&#x9898;"><a href="#&#x5047;&#x88C5;&#x662F;&#x6807;&#x9898;" class="headerlink" title="&#x5047;&#x88C5;&#x662F;&#x6807;&#x9898;"></a>&#x5047;&#x88C5;&#x662F;&#x6807;&#x9898;</h1><p>&#x8FD9;&#x4E2A;&#x7F51;&#x7AD9;&#x662F;&#x6211;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x535A;&#x5BA2;&#x7F51;&#x7AD9;&#xFF0C;&#x6211;&#x5E0C;&#x671B;&#x4EE5;&#x540E;&#x80FD;&#x591F;&#x5199;&#x4E00;&#x4E9B;&#x81EA;&#x5DF1;&#x7684;&#x5B66;&#x4E60;&#x5FC3;&#x5F97;&#xFF0C;&#x5DE5;&#x4F5C;&#x7ECF;&#x9A8C;&#x4E0E;&#x5927;&#x5BB6;&#x5206;&#x4EAB;&#x3002;</p>
+<p><strong>&#x5343;&#x91CC;&#x4E4B;&#x884C;&#x59CB;&#x4E8E;&#x8DB3;&#x4E0B;&#xFF0C;&#x77E5;&#x8BC6;&#x8981;&#x6162;&#x6162;&#x79EF;&#x7D2F;&#x3002;</strong></p>
 
           
         
@@ -592,7 +486,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
